@@ -18,7 +18,7 @@
 
 **Enterprise-grade • Microservices • AI/ML • POJK Compliant • Production-Ready**
 
-[📖 Documentation](#documentation) • [🚀 Quick Start](#quick-start) • [🏗️ Architecture](#architecture) • [🤝 Contributing](#contributing)
+[📖 Documentation](#documentation) • [🚀 Quick Start](#getting-started) • [🏗️ Architecture](#architecture) • [🤝 Contributing](#contributing)
 
 </div>
 

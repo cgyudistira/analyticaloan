@@ -43,46 +43,46 @@
 
 ## 🎯 Overview
 
-**AnalyticaLoan** adalah sistem AI-powered credit underwriting yang dirancang khusus untuk Bank Perkreditan Rakyat (BPR) dan Bank Pembiayaan Rakyat Syariah (BPRS) di Indonesia. Sistem ini mengotomasi proses underwriting kredit dengan kombinasi Machine Learning, Large Language Models (Gemini AI), dan rule-based engines yang fully compliant dengan regulasi OJK (POJK).
+**AnalyticaLoan** is an AI-powered credit underwriting system specifically designed for Bank Perkreditan Rakyat (BPR) and Bank Pembiayaan Rakyat Syariah (BPRS) in Indonesia. The system automates the credit underwriting process with a combination of Machine Learning, Large Language Models (Gemini AI), and rule-based engines that are fully compliant with OJK (POJK) regulations.
 
 ### 🎯 Business Goals
 
-- ✅ **Reduce underwriting time** dari 3-5 hari menjadi < 1 jam
-- ✅ **Improve accuracy** dengan ML-based credit scoring
-- ✅ **Ensure compliance** dengan POJK 33/2018, 1/2024, 29/2024
-- ✅ **Enable explainability** dengan SHAP-based XAI
-- ✅ **Scale operations** dengan microservices architecture
+- ✅ **Reduce underwriting time** from 3-5 days to < 1 hour
+- ✅ **Improve accuracy** with ML-based credit scoring
+- ✅ **Ensure compliance** with POJK 33/2018, 1/2024, 29/2024
+- ✅ **Enable explainability** with SHAP-based XAI
+- ✅ **Scale operations** with microservices architecture
 
 ---
 
 ## ✨ Key Features
 
 ### 🤖 AI & Machine Learning
-- **Credit Scoring Model** - XGBoost-based PD prediction dengan 50+ features
-- **Explainable AI (XAI)** - SHAP explanations untuk setiap keputusan
-- **Gemini AI Integration** - Dual model (Flash Thinking + Pro) untuk analisis dan memo generation
-- **RAG Policy Engine** - Weaviate vector DB untuk policy compliance checking
-- **Tool Calling Framework** - Agentic reasoning dengan function calling
+- **Credit Scoring Model** - XGBoost-based PD prediction with 50+ features
+- **Explainable AI (XAI)** - SHAP explanations for every decision
+- **Gemini AI Integration** - Dual model (Flash Thinking + Pro) for analysis and memo generation
+- **RAG Policy Engine** - Weaviate vector DB for policy compliance checking
+- **Tool Calling Framework** - Agentic reasoning with function calling
 
 ### 📄 Document Intelligence
 - **OCR Pipeline** - Google Cloud Vision + Tesseract fallback
 - **Multi-format Support** - PDF, JPG, PNG (max 10MB)
 - **Financial Statement Parsers** - Income Statement, Balance Sheet, Cash Flow
-- **Bank Statement Analyzer** - Multi-bank support (BCA, Mandiri, BRI, BNI, dll)
-- **Quality Control** - Auto-validation dengan confidence scoring
+- **Bank Statement Analyzer** - Multi-bank support (BCA, Mandiri, BRI, BNI, etc.)
+- **Quality Control** - Auto-validation with confidence scoring
 
 ### 🔒 Security & Compliance
-- **PII Encryption** - AES-256 (Fernet) untuk data sensitif
+- **PII Encryption** - AES-256 (Fernet) for sensitive data
 - **RBAC** - Role-based access control (Admin, Underwriter, Risk Analyst, Ops, Viewer)
 - **Audit Trail** - Comprehensive logging (DB + file redundancy)
-- **POJK Compliant** - Full compliance dengan POJK 33/2018, 1/2024, 29/2024
-- **Security Headers** - CSP, HSTS, X-Frame-Options, dll
+- **POJK Compliant** - Full compliance with POJK 33/2018, 1/2024, 29/2024
+- **Security Headers** - CSP, HSTS, X-Frame-Options, etc.
 
 ### 🏗️ Enterprise Architecture
-- **Microservices** - 6 independent services dengan API Gateway
-- **Event-Driven** - RabbitMQ untuk async processing
-- **Real-time Updates** - WebSocket untuk workflow progress
-- **Scalable** - Kubernetes dengan HPA (3-10 pods)
+- **Microservices** - 6 independent services with API Gateway
+- **Event-Driven** - RabbitMQ for async processing
+- **Real-time Updates** - WebSocket for workflow progress
+- **Scalable** - Kubernetes with HPA (3-10 pods)
 - **Observable** - Prometheus + Grafana + Jaeger
 
 ### 📊 Analytics & Reporting
@@ -319,7 +319,7 @@ make dev
 ### POJK Compliance
 
 #### POJK 33/2018 - Credit Risk Management ✅
-- Risk assessment dengan ML scoring
+- Risk assessment with ML scoring
 - Borrower eligibility criteria (age, DTI, DSCR)
 - Complete documentation & audit trail
 

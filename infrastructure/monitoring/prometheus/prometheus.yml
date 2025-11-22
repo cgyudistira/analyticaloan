@@ -1,0 +1,131 @@
+# Prometheus configuration for AnalyticaLoan monitoring
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'analyticaloan-production'
+    environment: 'production'
+
+# Alerting configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+# Load alerting rules
+rule_files:
+  - "/etc/prometheus/alerts/*.yml"
+
+# Scrape configurations
+scrape_configs:
+  # API Gateway metrics
+  - job_name: 'api-gateway'
+    kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+            - analyticaloan-production
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: api-gateway
+      - source_labels: [__meta_kubernetes_pod_ip]
+        action: replace
+        target_label: __address__
+        replacement: $1:8000
+    metrics_path: '/metrics'
+
+  # Auth Service metrics
+  - job_name: 'auth-service'
+    kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+            - analyticaloan-production
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: auth-service
+      - source_labels: [__meta_kubernetes_pod_ip]
+        action: replace
+        target_label: __address__
+        replacement: $1:8001
+    metrics_path: '/metrics'
+
+  # Document Service metrics
+  - job_name: 'document-service'
+    kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+            - analyticaloan-production
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: document-service
+    metrics_path: '/metrics'
+
+  # Underwriting Service metrics
+  - job_name: 'underwriting-service'
+    kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+            - analyticaloan-production
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: underwriting-service
+    metrics_path: '/metrics'
+
+  # Scoring Service metrics
+  - job_name: 'scoring-service'
+    kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+            - analyticaloan-production
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: scoring-service
+    metrics_path: '/metrics'
+
+  # PostgreSQL metrics
+  - job_name: 'postgresql'
+    static_configs:
+      - targets:
+          - postgres-exporter:9187
+
+  # Redis metrics
+  - job_name: 'redis'
+    static_configs:
+      - targets:
+          - redis-exporter:9121
+
+  # Kubernetes metrics
+  - job_name: 'kubernetes-nodes'
+    kubernetes_sd_configs:
+      - role: node
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+
+  - job_name: 'kubernetes-pods'
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+        target_label: __address__

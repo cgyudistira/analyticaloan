@@ -1,0 +1,14 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-dotenv==1.0.0
+sqlalchemy==2.0.23
+
+# Google AI
+google-generativeai==0.3.2
+
+# Vector Database
+weaviate-client==4.4.0
+
+# Utilities
+tenacity==8.2.3
